@@ -14,17 +14,8 @@ kubectl get pod
 # Describe pod
 kubectl describe pod frontend
 # To troubleshoot if any error 
-kubectl get pod second-application -o yaml
-# Expose pod
-kubectl expose pod frontend --type=LoadBalancer --port=8080 --target-port=8080
-
-kubectl expose pod backend --type=ClusterIP --port=8081 --target-port=8081
-
-
-
-kubectl exec --stdin --tty my-nginx-5b56ccd65f-d6654 -- /bin/bash
-
-
-
-curl http://backend-svc:8081/backend
-kubectl exec --stdin --tty my-nginx-5b56ccd65f-d6654 -- /bin/bash
+kubectl get pod frontend -o yaml
+# Create Service
+kubectl apply -f service.yaml
+# Get services
+kubectl get svc
